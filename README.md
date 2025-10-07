@@ -21,6 +21,7 @@ git clone --depth=1 --branch rpi-6.1.y https://github.com/raspberrypi/linux.git
 cd linux
 make bcm2711_defconfig
 make modules_prepare
+# make modules
 ```
 
 ## Transferring and Building the Module
@@ -42,3 +43,21 @@ make clean
 - This project uses the legacy GPIO API (`gpio_request`, `gpio_to_irq`, etc.) for clarity and learning purposes.
 - Hardware setup uses pull-up resistors for button detection (active-low logic).
 - See dmesg output for identifying which button was pressed first.
+
+
+## User Testing
+To verify the hardware wiring and GPIO behavior outside of the kernel module, you can manually test the GPIO pins from userspace:
+
+```bash
+# Export GPIO 27 to userspace
+echo 27 | sudo tee /sys/class/gpio/export
+
+# Set GPIO 27 direction to input
+echo in | sudo tee /sys/class/gpio/gpio27/direction
+
+# Continuously monitor GPIO 27 value every 0.2 seconds
+watch -n 0.2 cat /sys/class/gpio/gpio27/value
+
+# When finished, unexport GPIO 27
+echo 27 | sudo tee /sys/class/gpio/unexport
+```

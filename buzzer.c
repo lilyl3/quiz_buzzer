@@ -4,7 +4,7 @@
 #include <linux/interrupt.h>
 #include <linux/errno.h>
 
-#define GPIO_NUM1 17
+#define GPIO_NUM1 27
 #define GPIO_NUM2 23
 #define NUM_BUTTONS 2
 
@@ -107,7 +107,7 @@ static void cleanup_gpio_and_irq(Button_Data* btn) {
     gpio_free(btn->gpio_num);
 }
 
-static int __init buzzer_init() {
+static int __init buzzer_init(void) {
     printk(KERN_INFO "Requesting GPIOs\n");
     int ret, i;
 
