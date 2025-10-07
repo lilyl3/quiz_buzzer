@@ -61,3 +61,7 @@ watch -n 0.2 cat /sys/class/gpio/gpio27/value
 # When finished, unexport GPIO 27
 echo 27 | sudo tee /sys/class/gpio/unexport
 ```
+
+## Kernel  Log
+This screenshot shows the kernel log output (`dmesg`) verifying that my interrupt handling works.
+<p><<img src="simple_gpio_interrupt_test1.png" alt="Kernel interrupt handling log" width="400"/></p>
