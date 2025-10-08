@@ -4,7 +4,7 @@
 // Structure representing a GPIO pin with an optional IRQ and name
 typedef struct GPIO_Pin {
     unsigned int gpio_num;
-    int irq_num;
+    int irq_num = -1;
     const char* name;
 } GPIO_Pin;
 
