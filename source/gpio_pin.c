@@ -11,6 +11,10 @@ unsigned int get_gpio_num(GPIO_Pin* pin) {
     return pin->gpio_num;
 }
 
+const char* get_name(GPIO_Pin* pin) {
+    return pin->name;
+}
+
 // Returns the IRQ number associated with the pin
 int get_irq_num(GPIO_Pin* pin) {
     return pin->irq_num;

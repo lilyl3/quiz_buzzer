@@ -10,6 +10,8 @@ typedef struct GPIO_Pin {
 
 unsigned int get_gpio_num (GPIO_Pin*);
 int get_irq_num (GPIO_Pin*);
+const char* get_name(GPIO_Pin*);
+
 void set_irq_num (GPIO_Pin*, int);
 
 // Requests and sets GPIO pin (as input or output)
