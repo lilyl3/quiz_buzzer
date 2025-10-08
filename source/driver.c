@@ -84,6 +84,6 @@ static void __exit gpio_module_exit(void) {
 module_init(gpio_module_init);
 module_exit(gpio_module_exit);   // Not called if __init fails
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("");
-MODULE_DESCRIPTION("Simple GPIO input module");
+MODULE_LICENSE("10/2025");
+MODULE_AUTHOR("Lily");
+MODULE_DESCRIPTION("Linux GPIO Kernel Module");
