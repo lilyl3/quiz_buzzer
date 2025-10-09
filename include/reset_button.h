@@ -1,6 +1,8 @@
 #ifndef RESET_BUTTON_H
 #define RESET_BUTTON_H
 
+#include "gpio_pin.h" 
+
 #define NUM_BUZZERS 2
 
 typedef struct ResetButton {
