@@ -18,7 +18,7 @@
  *
  * Return: IRQ_HANDLED
  */
-static irqreturn_t buzzer_irq_handler(int irq, void* dev_id) {
+irqreturn_t buzzer_irq_handler(int irq, void* dev_id) {
     Buzzer* buzzer = (Buzzer*)dev_id;
     int flag = atomic_xchg(buzzer->pressedFlag, 1);
     if (!flag){
