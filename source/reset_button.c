@@ -23,8 +23,10 @@ irqreturn_t reset_button_irq_handler(int irq, void* dev_id) {
     for (int i = 0; i < NUM_BUZZERS; i++) {
         if (reset_btn->leds[i])
             gpio_set_value(get_gpio_num(reset_btn->leds[i]), 0);  // turn off LED
+            printk(KERN_INFO "Reset LED light %s!\n", get_name(reset_btn->leds[i]));
     }
     atomic_set(reset_btn->pressedFlag, 0);
+    printk(KERN_INFO "@reset: Flag value is: %d", atomic_read(reset_btn->pressedFlag));
     return IRQ_HANDLED;
 }
 
@@ -35,6 +37,7 @@ irqreturn_t reset_button_irq_handler(int irq, void* dev_id) {
  * Returns: 0 on success, negative errno on failure
  */
 int reset_button_request_irq(ResetButton* reset_btn) {
+
     int ret;
 
     // Get IRQ number associated with GPIO

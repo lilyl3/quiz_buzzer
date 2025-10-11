@@ -21,6 +21,12 @@
 irqreturn_t buzzer_irq_handler(int irq, void* dev_id) {
     Buzzer* buzzer = (Buzzer*)dev_id;
     int flag = atomic_xchg(buzzer->pressedFlag, 1);
+    printk(KERN_INFO "@buzzer %s: \n Current flag: %d \n Previous flag: %d", 
+        get_name(&buzzer->button), 
+        atomic_read(buzzer->pressedFlag), 
+        flag
+    );
+
     if (!flag){
         printk(KERN_INFO "Light up LED %s!\n", get_name(&buzzer->led));
         gpio_set_value(get_gpio_num(&buzzer->led), 1);
